@@ -17,6 +17,9 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: true
+      - name: Create folder vendor/ec-on-k8s
+          run:
+            pwd
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
