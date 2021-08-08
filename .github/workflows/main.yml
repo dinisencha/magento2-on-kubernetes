@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           logout: true
-      - run: pwd
+      - run: echo $GITHUB_PATH
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
