@@ -19,19 +19,4 @@ jobs:
         with:
           push: true
           tags: user/app:latest
-  job1:
-    runs-on: self-hosted
-    name: deploy magento to minikube local 3
-
-    - name: Deploy to minikube
-      run:
-        make step-1
-    - name: Display pods
-      run:
-        kubectl get pods
-    - name: Edit host file
-      run:
-        Add-Content C:\Windows\System32\drivers\etc\hosts "`n"MINIKUBE_IP
-      env:
-          MINIKUBE_IP: minikube ip
 
