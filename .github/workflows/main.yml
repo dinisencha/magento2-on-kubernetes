@@ -20,10 +20,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          file: src/Dockerfile
-          push: true
-          tags: user/app:latest
+        name: Get the version
+        id: vars
+        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+      - name: Build the tagged Docker image
+        run: docker build . --file Dockerfile --tag senchadini/magek8s:${{steps.vars.outputs.tag}}
+      - name: Push the tagged Docker image
+        run: docker push senchadini/magek8s:${{steps.vars.outputs.tag}}
+      - name: Build the latest Docker image
+        run: docker build . --file Dockerfile --tag senchadini/magek8s:latest
+      - name: Push the latest Docker image
+        run: docker push senchadini/magek8s:latest
