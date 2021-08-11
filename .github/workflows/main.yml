@@ -27,10 +27,10 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build the tagged Docker image
-        run: docker build -f src/Dockerfile -t myapp_prod .
+        run: docker build -f src/Dockerfile -t myapp_prod src/
       - name: Push the tagged Docker image
         run: docker push myapp_prod
       - name: Build the latest Docker image
-        run: docker build . -f src/Dockerfile -t myapp_prod
+        run: docker build src/ -f src/Dockerfile -t myapp_prod
       - name: Push the latest Docker image
         run: docker push myapp_prod
