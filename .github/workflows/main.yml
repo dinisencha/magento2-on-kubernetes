@@ -24,10 +24,10 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build the tagged Docker image
-        run: docker build . --file Dockerfile --tag senchadini/magekube:${{steps.vars.outputs.tag}}
+        run: docker build . --file Dockerfile --tag senchadini:${{steps.vars.outputs.tag}}
       - name: Push the tagged Docker image
-        run: docker push senchadini/magekube:${{steps.vars.outputs.tag}}
+        run: docker push senchadini:${{steps.vars.outputs.tag}}
       - name: Build the latest Docker image
-        run: docker build . --file Dockerfile --tag senchadini/magekube:latest
+        run: docker build . --file Dockerfile --tag senchadini:latest
       - name: Push the latest Docker image
-        run: docker push senchadini/magekube:latest
+        run: docker push senchadini:latest
