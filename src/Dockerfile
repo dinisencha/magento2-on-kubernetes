@@ -2,6 +2,8 @@ FROM php:7.3-fpm as base
 
 ENV COMPOSER_HOME=/tmp/composer
 ENV APCU_VERSION=5.1.18
+ENV DOCKER_BUILDKIT=0
+ENV COMPOSE_DOCKER_CLI_BUILD=0
 
 RUN apt-get update && apt-get install -y --no-install-recommends gnupg \
     netcat \
