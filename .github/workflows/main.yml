@@ -34,7 +34,7 @@ jobs:
         with:
           context: C:/actions-runner/_work/magento2-on-kubernetes/magento2-on-kubernetes/src/
           file: C:/actions-runner/_work/magento2-on-kubernetes/magento2-on-kubernetes/src/Dockerfile
-          push: true
+          push: false
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest
 
       - name: Image digest
