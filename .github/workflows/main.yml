@@ -30,6 +30,6 @@ jobs:
         
       - name: Building magento-actions docker image
         run: |
-          docker build . --tag ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest --tag ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:1.0
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:1.0
+          docker build src/ -f src/Dockerfile --tag ${{ secrets.DOCKER_HUB_USERNAME }}/magekube:latest --tag ${{ secrets.DOCKER_HUB_USERNAME }}/magekube:1.0
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/magekube:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/magekube:1.0
