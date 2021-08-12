@@ -27,15 +27,9 @@ jobs:
         name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
-
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: C:\actions-runner\_work\magento2-on-kubernetes\magento2-on-kubernetes\src\
-          file: C:\actions-runner\_work\magento2-on-kubernetes\magento2-on-kubernetes\src\Dockerfile
-          push: false
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        
+      - name: Building magento-actions docker image
+        run: |
+          docker build . --tag ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest --tag ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:1.0
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:1.0
