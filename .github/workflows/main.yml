@@ -32,8 +32,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: C:/actions-runner/_work/magento2-on-kubernetes/magento2-on-kubernetes/src/
-          file: C:/actions-runner/_work/magento2-on-kubernetes/magento2-on-kubernetes/src/Dockerfile
+          context: C:\actions-runner\_work\magento2-on-kubernetes\magento2-on-kubernetes\src\
+          file: C:\actions-runner\_work\magento2-on-kubernetes\magento2-on-kubernetes\src\Dockerfile
           push: false
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/magek8S:latest
 
